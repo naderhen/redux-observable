@@ -23,4 +23,12 @@ export class StateObservable extends Observable {
       }
     });
   }
+  
+  getState() {
+    if (process.env.NODE_ENV !== 'production') {
+      // https://github.com/redux-observable/redux-observable/issues/389
+      require('./utils/console').warn('Deprecated Usage of getState Found.');
+    }
+    return this.value;
+  }
 }
